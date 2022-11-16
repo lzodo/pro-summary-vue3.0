@@ -1,0 +1,13 @@
+@import "./base.scss";
+
+@mixin f-jc($type: space-between) {
+    display: flex;
+    justify-content: $type;
+    color:$color
+}
+
+@mixin f-center($jc: center,$ai: center) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+}
