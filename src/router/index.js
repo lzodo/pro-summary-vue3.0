@@ -7,12 +7,24 @@ const routes = [
         name: "home",
         component: HomeView,
     },
-    // {
-    //     path: "/about",
-    //     name: "about",
-    //     component: () =>
-    //         import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-    // },
+    {
+        path: "/login",
+        name: "login",
+        component: () =>
+            import("../views/Login.vue"),
+    },
+    {
+        path: "/index",
+        name: "index",
+        component: () =>
+            import("../views/Index.vue"),
+    },
+    {
+        path: "/dynamic",
+        name: "dynamic",
+        component: () =>
+            import("../views/Dynamic.vue"),
+    },
 ];
 
 const router = createRouter({
