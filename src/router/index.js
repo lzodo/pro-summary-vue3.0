@@ -1,11 +1,11 @@
 import { createRouter, createWebHashHistory } from "vue-router"; // createWebHistory(process.env.BASE_URL) history 模式
-import HomeView from "../views/HomeView.vue";
 
 const routes = [
     {
         path: "/",
-        name: "home",
-        component: HomeView,
+        name: "index",
+        component: () =>
+            import("../views/Index.vue"),
     },
     {
         path: "/login",
@@ -25,11 +25,33 @@ const routes = [
         component: () =>
             import("../views/Dynamic.vue"),
     },
+    {
+        path: "/groupchat",
+        name: "groupchat",
+        component: () =>
+            import("../views/GroupChat.vue"),
+    },
+    {
+        path: "/user",
+        name: "user",
+        component: () =>
+            import("../views/User.vue"),
+    },
 ];
 
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
 });
+
+router.beforeEach((to, from, next) => {
+    let token = localStorage.getItem("token");
+    if (!token && to.path != '/login') {
+        console.log(to, "beforeEach to")
+        next("/login")
+    } else {
+        next();
+    }
+})
 
 export default router;

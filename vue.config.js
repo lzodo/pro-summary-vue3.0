@@ -16,6 +16,7 @@ module.exports = defineConfig({
     devServer: { // 代理无效，待研究
         proxy: {
             "/api": {
+                // target: "http://114.115.212.129:8778",
                 target: "http://localhost:8778",
                 changeOrigin: true,
                 ws: true,

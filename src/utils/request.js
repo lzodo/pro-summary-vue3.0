@@ -1,22 +1,32 @@
 import axios from "axios";
 import { tansParams } from "./tool";
 import errorCode from "@/utils/errorCode";
+import { Notify } from 'vant';
+
+
 
 // 创建axios实例
-const service = axios.create({
-    // axios中请求配置有baseURL选项，表示请求URL公共部分
-    baseURL:process.env.VUE_APP_BASE_API,
-    timeout: 10000,
-});
+// const service = axios.create({
+//     baseURL:process.env.VUE_APP_BASE_API,    // 代理无效
+//     timeout: 10000,
+// });
 
-console.log(process.env.VUE_APP_BASE_API)
+let baseURL = "/";
+if (process.env.NODE_ENV === 'production') {
+    baseURL = process.env.VUE_APP_BASE_API;
+}
+
+const service = axios.create({
+    baseURL,
+    timeout: 10000,
+})
 
 // request拦截器
 service.interceptors.request.use(
-    (config) => {  
-        if(!config.headers.notToken){
-            config.headers.token= localStorage.getItem("token");
-        }     
+    (config) => {
+        if (!config.headers.notToken) {
+            config.headers.token = localStorage.getItem("token");
+        }
 
         // get请求映射params参数
         if (config.method === "get" && config.params) {
@@ -26,7 +36,7 @@ service.interceptors.request.use(
             config.params = {};
             config.url = url;
         }
-        
+
         console.log(config);
         return config;
     },
@@ -39,7 +49,6 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
     (res) => {
-        console.log(res);
         // 未设置状态码则默认成功状态
         const code = res.data.code || 200;
         // 获取错误信息
@@ -52,38 +61,26 @@ service.interceptors.response.use(
             return res.data;
         }
         if (code === 401) {
-            // if (!isRelogin.show) {
-            //     isRelogin.show = true;
-            //     MessageBox.confirm('登录状态已过期，您可以继续留在该页面，或者重新登录', '系统提示', {
-            //         confirmButtonText: '重新登录',
-            //         cancelButtonText: '取消',
-            //         type: 'warning'
-            //     }
-            //     ).then(() => {
-            //         isRelogin.show = false;
-            //         store.dispatch('LogOut').then(() => {
-            //             location.href = '/index';
-            //         })
-            //     }).catch(() => {
-            //         isRelogin.show = false;
-            //     });
-            // }
             console.log("==401", msg);
             return Promise.reject("无效的会话，或者会话已过期，请重新登录。");
         } else if (code === 500) {
-            // Message({
-            //     message: msg,
-            //     type: 'error'
-            // })
             console.log("==500", msg);
+            if (!res.config.headers.noterrdialog) {
+                Notify(msg);
+            }
             return Promise.reject(new Error(msg));
         } else if (code !== 200) {
             console.log("!=200", msg);
-            // Notification.error({
-            //     title: msg
-            // })
-            // return Promise.reject('error')
+            if (!res.config.headers.noterrdialog) {
+                Notify(msg);
+            }
+            return Promise.reject(new Error(msg))
         } else {
+
+            if (res.config.headers.successdialog) {
+                let dialogMsg = res.config.headers.successMsg || '操作成功';
+                Notify({ type: 'success', message: decodeURIComponent(dialogMsg) });
+            }
             return res.data;
         }
     },
@@ -97,11 +94,12 @@ service.interceptors.response.use(
         } else if (message.includes("Request failed with status code")) {
             message = "系统接口" + message.substr(message.length - 3) + "异常";
         }
-        // Message({
-        //     message: message,
-        //     type: 'error',
-        //     duration: 5 * 1000
-        // })
+
+        Notify({
+            message: message,
+            duration: 5000,
+        });
+
         console.log(message);
         return Promise.reject(error);
     }

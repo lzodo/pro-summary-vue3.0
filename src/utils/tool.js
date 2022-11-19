@@ -1,3 +1,4 @@
+import { Notify } from 'vant';
 /**
 * 参数处理
 * @param {*} params  参数
@@ -23,4 +24,19 @@ export function tansParams(params) {
         }
     }
     return result
+}
+
+/**
+* 非空验证
+*/
+
+export function hasEmaty(options) {
+    console.log(options)
+    let res = Object.keys(options).find(item => !options[item]);
+    if (res) {
+        Notify({ type: 'warning', message: `参数 ${res} 必传` });
+        return true;
+    } else {
+        return false;
+    }
 }
