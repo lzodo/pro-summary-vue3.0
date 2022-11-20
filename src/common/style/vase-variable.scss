@@ -1,9 +1,11 @@
-$main-bg:#07C160;
-$main-color:#07C160;
-$base-color:#666;
+$main-bg:#07C160; // 系统背景主色调
+$main-color:#07C160; // 系统位置主色调
+$base-color:#666; // 默认文字颜色
 
-$boder-color:#ebedf0;
+$boder-color:#ebedf0; // 默认边框颜色
+$login-bg: #7de2e6; // 登入页面背景颜色
 
-$login-bg: #7de2e6;
+$header-bg:"#ffffff"; // 头部背景颜色
+$header-height:40px; // 头部标题高度
 
-$header-bg:"#ffffff";
+$tabbar-height:60px; // tabbar 高度

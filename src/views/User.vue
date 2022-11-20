@@ -1,5 +1,5 @@
 <template>
-    <div class="user-page page">
+    <div class="user-page page tabbar-page header-page">
         <si-header title="我" isback="-1"></si-header>
         <div>66</div>
         <tab-bar :tabIndex="3"></tab-bar>

@@ -51,10 +51,14 @@ export default {
 
 .header {
     background: $header-bg;
-    height: 40px;
+    height: $header-height;
     position: relative;
     border-bottom: 1px solid $boder-color;
     background: #fff;
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 100%;
     @include f-jc;
 
     .left {

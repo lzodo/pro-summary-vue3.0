@@ -7,6 +7,12 @@ import './assets/fonts/iconfont.css'
 import "./rem"
 
 
-import MyGlobal from "./common/js/vueprototype";
+const app = createApp(App);
+import MyGlobal from "./common/js/VuePrototype";
+import config from "@/utils/config";
 
-createApp(App).use(store).use(router).use(MyGlobal).mount('#app')
+app.config.globalProperties.$config = config.config; 
+
+// import GlobalCpn from "./common/js/GlobalCpn"
+
+app.use(store).use(router).use(MyGlobal).mount('#app')

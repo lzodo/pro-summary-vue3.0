@@ -3,9 +3,7 @@ import { createRouter, createWebHashHistory } from "vue-router"; // createWebHis
 const routes = [
     {
         path: "/",
-        name: "index",
-        component: () =>
-            import("../views/Index.vue"),
+        redirect: '/index'
     },
     {
         path: "/login",

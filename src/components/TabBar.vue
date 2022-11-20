@@ -56,7 +56,7 @@ export default {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: $tabbar-height;
     background: #fff;
     border-top: 1px solid $boder-color;
 
