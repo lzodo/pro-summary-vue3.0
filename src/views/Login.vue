@@ -1,5 +1,5 @@
 <template>
-    <div class="login-page page">
+    <div class="login-page page header-page">
         <si-header title="登录" type="login"></si-header>
         <div class="top">
             <div class="menu">

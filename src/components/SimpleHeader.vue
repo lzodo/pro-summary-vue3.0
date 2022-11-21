@@ -108,8 +108,10 @@ export default {
 
     &.logintype {
         background: $login-bg;
-        color: #fff;
         border-bottom: none;
+        .title{
+            color: #fff;
+        }
     }
 }
 </style>
