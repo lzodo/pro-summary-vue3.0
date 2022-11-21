@@ -22,6 +22,7 @@
                         <span class="label">passwd</span>
                         <van-field right-icon="eye-o" v-model="passwd" placeholder="请输入密码" type="password" />
                     </div>
+                    <img :src="verImg" @click="getVerifCode"/>
                     <button class="submitbtn" type="warning" v-if="activeIndex == 0" @click="signin">
                         登 录
                     </button>
@@ -35,7 +36,7 @@
 </template>
 
 <script>
-import { signin, signup } from "@/api/login.js";
+import { signin, signup, verifCode} from "@/api/login.js";
 import { hasEmaty } from "@/utils/tool"
 import SiHeader from "@/components/SimpleHeader";
 import { defineComponent } from "vue";
@@ -46,6 +47,8 @@ export default defineComponent({
             activeIndex: 0,
             username: "lzo",
             passwd: "456",
+            verToken:"",
+            verImg:""
         };
     },
     components: {
@@ -84,8 +87,15 @@ export default defineComponent({
                 this.activeIndex = 0;
             });
         },
+        getVerifCode(){
+            verifCode().then((res) => {
+                this.verImg = `data:image/jpeg;base64,${res.base64}`;
+                this.verToken = res.token;
+            });
+        },
     },
     mounted() {
+        this.getVerifCode(); 
     },
 });
 </script>

@@ -28,3 +28,14 @@ export function signup(data) {
         method: 'post',
     })
 }
+
+// 注册
+export function verifCode() {
+    return request({
+        url: '/api/users/verifCode',
+        headers:{
+            notToken:true,  // 是否不需要token
+        },
+        method: 'get',
+    })
+}
