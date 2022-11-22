@@ -13,13 +13,7 @@
             </div>
         </div>
         <div class="dynamic-list">
-            <van-list
-                v-model:loading="loading"
-                :finished="finished"
-                offset="50"
-                finished-text="没有更多了"
-                @load="onLoad"
-                >
+            <van-list v-model:loading="loading" :finished="finished" offset="50" finished-text="没有更多了" @load="onLoad">
                 <van-cell class='item' v-for="item in dynamicList" :key="item.id">
                     <div class="inner-box">
                         <div class="left">
@@ -49,8 +43,10 @@ export default {
         return {
             userInfo: JSON.parse(localStorage.getItem("userInfo")),
             dynamicList: [],
-            finished:false,
-            loading:false
+            finished: false,
+            loading: false,
+            size: 10,
+            number: 1,
         }
     },
     components: {
@@ -58,18 +54,23 @@ export default {
         TabBar
     },
     methods: {
-        onLoad(){
-            console.log('xxxx')
+        onLoad() {
+            this.getList();
         },
         getList() {
-            let params = { pageSize: 10, pageNumber: 1, name: "消极" };
+            let params = { pageSize: this.size, pageNumber: this.number };
             getDynamecList(params).then((res) => {
-                this.dynamicList = res.result.list;
+                this.dynamicList = [...this.dynamicList, ...res.result.list];
+                this.number++;
+                this.loading = false;
+                if (res.result.list.length == 0) {
+                    this.finished = true;
+                }
             });
         },
     },
     mounted() {
-        this.getList();
+
     },
 };
 </script>
@@ -77,10 +78,11 @@ export default {
 <style lang="scss" scoped>
 @import "@/common/style/mixin.scss";
 
-.dynamic-page{
+.dynamic-page {
     background-color: #fff;
     overflow: auto;
 }
+
 .top {
     width: 100%;
     background-color: rgb(255, 255, 255);
@@ -101,11 +103,12 @@ export default {
             display: flex;
             position: absolute;
             right: 30px;
-            top: -30px;
+            top: -35px;
 
             .name {
                 color: #fff;
                 margin-right: 10px;
+                margin-top: 5px;
                 font-size: 17px;
                 font-weight: bold;
             }
@@ -121,7 +124,11 @@ export default {
 
 .dynamic-list {
     width: 100%;
-    // min-height: 300rpx;
+
+    // .van-list{
+    //     min-height: 300px;
+    //     overflow: auto;
+    // }
 
     .item {
         .inner-box {
@@ -147,15 +154,15 @@ export default {
 
                 .display-name {
                     color: #3458ad;
-                    font-size: 17px;
+                    font-size: 16px;
                     letter-spacing: 1px;
                     font-weight: bold;
                 }
 
                 .content {
                     word-wrap: break-word;
-                    margin-top: 3px;
-                    font-size: 17px;
+                    margin-top: 2px;
+                    font-size: 15px;
                     color: #000;
                 }
             }

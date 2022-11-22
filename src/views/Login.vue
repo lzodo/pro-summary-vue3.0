@@ -22,8 +22,21 @@
                         <span class="label">passwd</span>
                         <van-field right-icon="eye-o" v-model="passwd" placeholder="请输入密码" type="password" />
                     </div>
-                    <img :src="verImg" @click="getVerifCode"/>
-                    <button class="submitbtn" type="warning" v-if="activeIndex == 0" @click="signin">
+                    <van-field
+                        v-if="activeIndex == 0"
+                        v-model="userCodeVal"
+                        center
+                        clearable
+                        label=""
+                        placeholder="请输入验证码"
+                        label-width="50"
+                    >
+                        <template #button>
+                            <img class='verimgcode' :src="verImg" @click="getVerifCode"/>
+                        </template>
+                    </van-field>
+                    
+                    <button class="submitbtn" type="warning" v-if="activeIndex == 0" @keydown.enter="signin" @click="signin">
                         登 录
                     </button>
                     <button class="submitbtn" type="warning" v-if="activeIndex == 1" @click="signup">
@@ -36,6 +49,7 @@
 </template>
 
 <script>
+import { Notify } from 'vant';
 import { signin, signup, verifCode} from "@/api/login.js";
 import { hasEmaty } from "@/utils/tool"
 import SiHeader from "@/components/SimpleHeader";
@@ -48,7 +62,8 @@ export default defineComponent({
             username: "lzo",
             passwd: "456",
             verToken:"",
-            verImg:""
+            verImg:"",
+            userCodeVal:""
         };
     },
     components: {
@@ -65,6 +80,10 @@ export default defineComponent({
                 passwd: this.passwd
             }
             if (hasEmaty(params)) {
+                return;
+            }
+            if(this.verToken != this.userCodeVal){
+                Notify('验证码不正确');
                 return;
             }
             signin(params).then((res) => {
@@ -128,6 +147,10 @@ export default defineComponent({
             }
         }
     }
+}
+
+.verimgcode{
+    width: 100px;
 }
 
 .loginInfo {
