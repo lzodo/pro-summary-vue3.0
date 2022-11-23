@@ -1,0 +1,12 @@
+// 按钮防抖动 
+// button{
+//     animation: throttle 2s step-end forwards;
+// }
+@keyframes throttle {
+    from {
+        pointer-events: none;
+    }
+    to {
+        pointer-events: all;
+    }
+}

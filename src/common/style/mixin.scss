@@ -1,5 +1,6 @@
 @import "./base.scss";
 @import "./vase-variable.scss";
+@import "./animate.scss";
 
 
 @mixin f-jc($type: space-between) {
@@ -17,6 +18,7 @@
 //     position: relative;
 //     top:$px;
 // }
+
 
 
 .tabbar-page{

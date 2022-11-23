@@ -29,7 +29,7 @@ export function signup(data) {
     })
 }
 
-// 注册
+// 图形码
 export function verifCode() {
     return request({
         url: '/api/users/verifCode',
