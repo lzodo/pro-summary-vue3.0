@@ -8,7 +8,7 @@ import "./rem"
 
 
 const app = createApp(App);
-import MyGlobal from "./common/js/VuePrototype";
+import MyGlobal from "@/common/js/VuePrototype";
 import config from "@/utils/config";
 
 app.config.globalProperties.$config = config.config; 
