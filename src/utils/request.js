@@ -28,6 +28,10 @@ service.interceptors.request.use(
             config.headers.token = localStorage.getItem("token");
         }
 
+        if(process.env.NODE_ENV === 'production'){
+            config.url = config.url.replace(/^\/api/,"");
+        }
+
         // get请求映射params参数
         if (config.method === "get" && config.params) {
             console.log(config.url, "config.url");
