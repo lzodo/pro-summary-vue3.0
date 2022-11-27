@@ -4,7 +4,7 @@ const ComponentsPlugin = require("unplugin-vue-components/webpack");
 
 // 全局配置
 const { config } = require("./src/utils/config")
-console.log(config.baseUrl);
+console.log(config.proxyUrl);
 
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
@@ -25,7 +25,7 @@ module.exports = defineConfig({
     devServer: { // 代理无效，待研究
         proxy: {
             "/api": {
-                target: config.baseUrl,
+                target: config.proxyUrl,
                 // target: "http://114.115.212.129:8778",
                 // target: "http://localhost:8778",
                 changeOrigin: true,

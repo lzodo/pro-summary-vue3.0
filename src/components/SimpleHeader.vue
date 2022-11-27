@@ -7,7 +7,9 @@
             </div>
         </div>
         <div class="title">{{ title }}</div>
-        <div class="right"></div>
+        <div class="right f-center">
+            <slot name="right"></slot>
+        </div>
     </header>
 </template>
 
@@ -95,11 +97,10 @@ export default {
     }
 
     .right {
-        width: 50px;
+        width: 80px;
         position: absolute;
         right: 0;
         top: 0;
-        // background: #f00;
         height: 100%;
     }
 

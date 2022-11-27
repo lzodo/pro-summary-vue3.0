@@ -59,8 +59,8 @@ export default defineComponent({
     data() {
         return {
             activeIndex: 0,
-            username: "lzo",
-            passwd: "456",
+            username: "",
+            passwd: "",
             verToken:"",
             verImg:"",
             userCodeVal:""
@@ -89,6 +89,7 @@ export default defineComponent({
             signin(params).then((res) => {
                 localStorage.setItem("token", res.token);
                 localStorage.setItem("userInfo", JSON.stringify(res.userInfo));
+
                 this.$router.push({
                     path: "/index"
                 })

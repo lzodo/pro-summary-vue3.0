@@ -24,6 +24,12 @@ const routes = [
             import("../views/Dynamic.vue"),
     },
     {
+        path: "/dynamic-add",
+        name: "dynamic-add",
+        component: () =>
+            import("../views/DynamicAdd.vue"),
+    },
+    {
         path: "/groupchat",
         name: "groupchat",
         component: () =>
