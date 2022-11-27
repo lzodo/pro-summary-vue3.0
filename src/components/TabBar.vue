@@ -38,7 +38,7 @@ export default {
             if (this.isback == '-1') {
                 this.$router.go(-1)
             } else {
-                this.$router.push({ path: this.isback })
+                this.$repPath(this.isback)
             }
         }
     },

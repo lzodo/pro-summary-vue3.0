@@ -54,6 +54,8 @@ import { signin, signup, verifCode} from "@/api/login.js";
 import { hasEmaty } from "@/utils/tool"
 import SiHeader from "@/components/SimpleHeader";
 import { defineComponent } from "vue";
+import head_m from "@/assets/images/head_m.png";
+import head_g from "@/assets/images/head_g.png";
 export default defineComponent({
     name: "UserLogin",
     data() {
@@ -89,6 +91,14 @@ export default defineComponent({
             signin(params).then((res) => {
                 localStorage.setItem("token", res.token);
                 localStorage.setItem("userInfo", JSON.stringify(res.userInfo));
+
+                let defaultHeadurl = "";
+                if (res.userInfo.headurl) {
+                    defaultHeadurl = this.$config.baseUrl + res.userInfo.headurl;
+                } else {
+                    defaultHeadurl = res.userInfo.sex == "男" ? head_m : head_g;
+                }
+                localStorage.setItem("userHead",defaultHeadurl);
 
                 this.$router.push({
                     path: "/index"

@@ -10,7 +10,7 @@
                 <div class="self-name">
                     <div class="name">{{ userInfo.displayName || "未设置" }}</div>
                     <van-image style="border-radius:5px;overflow: hidden;" width="60" height="60" fit="cover"
-                        :src="$config.baseUrl + userInfo.headurl" />
+                        :src="defaultHeadurl" />
                 </div>
             </div>
         </div>
@@ -57,12 +57,14 @@ import { getDynamecList, removeDynamic } from "@/api/dynamic.js";
 import SiHeader from "@/components/SimpleHeader";
 import TabBar from "@/components/TabBar";
 import { ImagePreview, Dialog } from 'vant';
+
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: "Dynamic",
     data() {
         return {
             userInfo: JSON.parse(localStorage.getItem("userInfo")),
+            defaultHeadurl: "",
             dynamicList: [],
             finished: false,
             loading: false,
@@ -133,7 +135,7 @@ export default {
         },
     },
     mounted() {
-
+        this.defaultHeadurl = localStorage.getItem("userHead");
     },
 };
 </script>

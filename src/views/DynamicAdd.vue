@@ -43,7 +43,7 @@ export default {
                 if (this.fileList.length > 0) {
                     this.addPics(res.result.insertId);
                 } else {
-                    this.$toPath("/dynamic")
+                    this.$repPath("/dynamic")
                 }
             })
         },
@@ -54,7 +54,7 @@ export default {
                 fileFormData.append("files",item.file);
             })
             uploadsPicture({id:dyId,files:fileFormData}).then(()=>{
-                this.$toPath("/dynamic")
+                this.$repPath("/dynamic")
             })
         },
 

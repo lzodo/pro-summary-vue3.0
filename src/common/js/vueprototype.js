@@ -10,6 +10,15 @@ const install = function (app) {
             })
         }
     }
+    app.config.globalProperties.$repPath = function (options) {
+        if (typeof options == 'object') {
+            router.replace(options);
+        } else {
+            router.replace({
+                path: options
+            })
+        }
+    }
 }
 
 export default install;
