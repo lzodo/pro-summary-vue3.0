@@ -10,7 +10,7 @@
                 <div class="self-name">
                     <div class="name">{{ userInfo.displayName || "未设置" }}</div>
                     <van-image style="border-radius:5px;overflow: hidden;" width="60" height="60" fit="cover"
-                        :src="defaultHeadurl" />
+                        :src="$config.baseUrl + userInfo.headurl" />
                 </div>
             </div>
         </div>

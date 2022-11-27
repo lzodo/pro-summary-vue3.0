@@ -5,7 +5,7 @@
             <div class="left flex-t">
                 <div class="headimg">
                     <van-image style="border-radius:5px;overflow: hidden;" width="60" height="60" fit="cover"
-                        :src="defaultHeadurl" />
+                        :src="$config.baseUrl + userInfo.headurl" />
                 </div>
             </div>
             <div class="right">
@@ -13,7 +13,7 @@
                     <div class="display-name">{{ userInfo.displayName || "未设置" }}</div>
                     <div class="account-number">账号：{{ userInfo.name }}</div>
                 </div>
-                <div class="iconfont iconbianji" @click="editUserInfo"></div>
+                <div class="iconfont iconbianji" @click="$toPath('/user-edit')"></div>
             </div>
         </div>
         <van-cell-group>
