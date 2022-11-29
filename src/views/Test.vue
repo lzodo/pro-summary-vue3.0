@@ -5,13 +5,19 @@
         <div>
             {{ infos.username }}
         </div>
+        {{readonlys}}
+        <TestCpn class="ls" :infos="infos" @changeName = changeName></TestCpn>
     </div>
 </template>
 
 <script>
-import { ref, reactive } from 'vue';
+import { ref, reactive, readonly ,isProxy} from 'vue';
+import TestCpn from "./TestCpn.vue"
 export default {
     name: "TestPage",
+    components:{
+        TestCpn
+    },
     setup() {
         // ref 简单响应式数据,也可以是复杂类型数据
         let count = ref(100);
@@ -27,9 +33,23 @@ export default {
         })
         infos.username = "abc";
 
+        const readonlys = readonly({
+            username:"789"
+        })
+        readonlys.username = "456";
+
+        const changeName = (data)=>{
+            infos.username = data;
+        }
+
+        console.log(isProxy(infos))
+
+
         return {
             count,
-            infos
+            infos,
+            readonlys,
+            changeName
         }
     }
 }
