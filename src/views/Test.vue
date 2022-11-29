@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- vue 自动将count ref对象解包 不能带value，深层对象修改时需要带.value -->
-        {{ count }}
+        {{ count }} - {{plusOne}}
         <div>
             {{ infos.username }}
         </div>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { ref, reactive, readonly ,isProxy} from 'vue';
+import { ref, reactive, readonly ,isProxy,computed} from 'vue';
 import TestCpn from "./TestCpn.vue"
 export default {
     name: "TestPage",
@@ -24,6 +24,7 @@ export default {
         // count 对应 ref对象的value
         count.value++;
         console.log(count.value);
+        const plusOne = computed(() => count.value + 1)
 
 
         // reactive 复杂数据类型依赖收集, 不要关心value
@@ -42,14 +43,15 @@ export default {
             infos.username = data;
         }
 
-        console.log(isProxy(infos))
+        console.log(isProxy(count),3333333)
 
 
         return {
             count,
             infos,
             readonlys,
-            changeName
+            changeName,
+            plusOne
         }
     }
 }

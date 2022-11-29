@@ -61,8 +61,8 @@ export default defineComponent({
     data() {
         return {
             activeIndex: 0,
-            username: "",
-            passwd: "",
+            username: "cs1",
+            passwd: "1",
             verToken:"",
             verImg:"",
             userCodeVal:""

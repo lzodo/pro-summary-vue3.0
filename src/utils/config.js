@@ -1,4 +1,3 @@
-console.log(process.env.VUE_APP_BASE_API,123456);
 const config = {
     // "proxyUrl": "http://114.115.212.129:8778", // 跨域代理
     "proxyUrl": "http://localhost:8778",
