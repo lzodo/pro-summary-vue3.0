@@ -1,21 +1,23 @@
 <template>
     <div>
         <!-- vue 自动将count ref对象解包 不能带value，深层对象修改时需要带.value -->
-        {{ count }} - {{plusOne}}
+        {{ count }} - {{ plusOne }}
         <div>
             {{ infos.username }}
         </div>
-        {{readonlys}}
-        <TestCpn class="ls" :infos="infos" @changeName = changeName></TestCpn>
+        {{ readonlys }}
+        <TestCpn class="ls" :infos="infos" @changeName=changeName></TestCpn>
+
+        <h2 ref="domh2Re">refdom</h2>
     </div>
 </template>
 
 <script>
-import { ref, reactive, readonly ,isProxy,computed} from 'vue';
+import { ref, reactive, readonly, isProxy, computed, onMounted } from 'vue';
 import TestCpn from "./TestCpn.vue"
 export default {
     name: "TestPage",
-    components:{
+    components: {
         TestCpn
     },
     setup() {
@@ -35,15 +37,24 @@ export default {
         infos.username = "abc";
 
         const readonlys = readonly({
-            username:"789"
+            username: "789"
         })
         readonlys.username = "456";
 
-        const changeName = (data)=>{
+        const changeName = (data) => {
             infos.username = data;
         }
 
-        console.log(isProxy(count),3333333)
+        console.log(isProxy(infos))
+
+        const domh2Re = ref();
+        onMounted(() => {
+            console.log(domh2Re.value, 3333333)
+        })
+
+        watchEffect(()=>{
+            
+        }) 
 
 
         return {
@@ -51,7 +62,8 @@ export default {
             infos,
             readonlys,
             changeName,
-            plusOne
+            plusOne,
+            domh2Re
         }
     }
 }
