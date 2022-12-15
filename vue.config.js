@@ -8,6 +8,7 @@ console.log(config.proxyUrl);
 
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
+    lintOnSave: false,
     transpileDependencies: true,
     publicPath: "./",
     configureWebpack: { // 配置webpack相关信息
@@ -22,7 +23,7 @@ module.exports = defineConfig({
             // }
         },
     },
-    devServer: { // 代理无效，待研究
+    devServer: { 
         proxy: {
             "/api": {
                 target: config.proxyUrl,

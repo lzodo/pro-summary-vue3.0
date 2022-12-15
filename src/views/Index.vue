@@ -6,22 +6,11 @@
     </div>
 </template>
 
-<script>
+<script setup>
 // import { getDynamecList } from "@/api/index.js";
 import SiHeader from "@/components/SimpleHeader";
 import TabBar from "@/components/TabBar"
-export default {
-    name: "IndexPage",
-    components: {
-        SiHeader,
-        TabBar
-    },
-    methods: {
 
-    },
-    mounted() {
-    },
-};
 </script>
 
 <style lang="scss" scoped>
