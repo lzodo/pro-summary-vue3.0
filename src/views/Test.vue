@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { ref, reactive, readonly, isProxy, computed, onMounted } from 'vue';
+import { ref, reactive, readonly, isProxy, computed, onMounted,watchEffect } from 'vue';
 import TestCpn from "./TestCpn.vue"
 export default {
     name: "TestPage",
