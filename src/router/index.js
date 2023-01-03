@@ -48,6 +48,12 @@ const routes = [
             import("../views/UserEdit.vue"),
     },
     {
+        path: "/v3menus",
+        name: "v3menus",
+        component: () =>
+            import("../views/v3menus.vue"),
+    },
+    {
         path: "/test",
         name: "test",
         component: () =>

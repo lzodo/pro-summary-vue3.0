@@ -18,6 +18,7 @@
         </div>
         <van-cell-group>
             <van-cell title="设置" icon="setting-o" is-link/>
+            <van-cell title="菜单" icon="bars" is-link @click="toMenus"/>
             <van-cell title="退出登录" icon="revoke" is-link @click="loginOut"/>
         </van-cell-group>
         <tab-bar :tabIndex="3"></tab-bar>
@@ -47,6 +48,9 @@ export default {
             localStorage.removeItem("userHead");
             this.$repPath("/login");
         },
+        toMenus(){
+            this.$toPath("/v3menus");
+        }
     },
     mounted() {
         this.defaultHeadurl = localStorage.getItem("userHead");
