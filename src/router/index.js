@@ -50,8 +50,18 @@ const routes = [
     {
         path: "/v3menus",
         name: "v3menus",
-        component: () =>
-            import("../views/v3menus.vue"),
+        children: [
+            {
+                path: "",
+                component: () =>
+                    import("../views/v3menus.vue"),
+            },
+            {
+                path: "vueuse",
+                component: () =>
+                    import("../views/v3menus/vueuse.vue"),
+            }
+        ]
     },
     {
         path: "/test",

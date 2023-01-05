@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <div class="index-page page tabbar-page header-page">
         <si-header title="首页" isback="-1"></si-header>

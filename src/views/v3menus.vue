@@ -2,8 +2,8 @@
 <template>
     <div class="menu-page page">
         <ul class="list">
-            <li class="item" v-for="(item, index) in menuList" :key="index">
-                <i class="iconfont iconwodewo"></i><span>{{item.name}}5</span>
+            <li class="item" v-for="(item, index) in menuList" :key="index" @click="$toPath(item.path)">
+                <i class="iconfont iconwodewo"></i><span>{{item.name}}</span>
             </li>
         </ul>
     </div>
