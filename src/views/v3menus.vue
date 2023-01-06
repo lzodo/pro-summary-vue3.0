@@ -3,7 +3,7 @@
     <div class="menu-page page">
         <ul class="list">
             <li class="item" v-for="(item, index) in menuList" :key="index" @click="$toPath(item.path)">
-                <i class="iconfont iconwodewo"></i><span>{{item.name}}</span>
+                <i class="iconfont" :class="item.icon" ></i><span>{{item.name}}</span>
             </li>
         </ul>
     </div>
@@ -34,12 +34,17 @@ console.log(menuList, title);
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        color:#777;
         .iconfont {
             font-size: 25px;
             margin-bottom: 5px;
         }
         &:active {
             background-color: rgb(250, 249, 249);
+        }
+        &:last-child{
+            grid-column-start:span 2;
+            grid-column-end:4;
         }
     }
 }

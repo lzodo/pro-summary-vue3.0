@@ -60,6 +60,11 @@ const routes = [
                 path: "vueuse",
                 component: () =>
                     import("../views/v3menus/vueuse.vue"),
+            },
+            {
+                path: "parallax",
+                component: () =>
+                    import("../views/v3menus/parallax-js.vue"),
             }
         ]
     },

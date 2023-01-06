@@ -1,12 +1,13 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <div class="r-page page">
-        ddd
+        vueuse{{data.a}}
     </div>
 </template>
 
 <script setup>
-
+import { reactive } from 'vue';
+let data = reactive({a:1})
 </script>
 
 <style lang="scss" scoped>

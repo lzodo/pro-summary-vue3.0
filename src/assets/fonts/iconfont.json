@@ -6,6 +6,55 @@
   "description": "移动端小图标",
   "glyphs": [
     {
+      "icon_id": "1286955",
+      "name": "SEN015",
+      "font_class": "sen015",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "1286968",
+      "name": "SEN108",
+      "font_class": "sen108",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "3456454",
+      "name": "品牌特卖",
+      "font_class": "pinpaitemai",
+      "unicode": "e70d",
+      "unicode_decimal": 59149
+    },
+    {
+      "icon_id": "4506837",
+      "name": "功能定义",
+      "font_class": "gongnengdingyi",
+      "unicode": "ebb7",
+      "unicode_decimal": 60343
+    },
+    {
+      "icon_id": "6032661",
+      "name": "未标题-12_fenxiang-xian",
+      "font_class": "weibiaoti-_fenxiang-xian",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "6032670",
+      "name": "未标题-12_shoucang-xian",
+      "font_class": "weibiaoti-_shoucang-xian",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "8723708",
+      "name": "群聊",
+      "font_class": "qunliao",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
       "icon_id": "1165716",
       "name": "动态",
       "font_class": "duihuakuang",
