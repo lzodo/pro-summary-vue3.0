@@ -13,38 +13,39 @@
     </header>
 </template>
 
-<script setup>
-import { useRouter } from 'vue-router';
-const router = useRouter();
-
-const props = defineProps({
-    title: {
-        typeof: String,
-        default: "",
+<script>
+export default {
+    props: {
+        title: {
+            typeof: String,
+            default: "",
+        },
+        type: {
+            typeof: String,
+            default: "",
+        },
+        isback: {
+            typeof: String,
+            default: "",
+        },
+        leftFont: {
+            typeof: String,
+            default: "",
+        },
     },
-    type: {
-        typeof: String,
-        default: "",
+    methods: {
+        goBack() {
+            if (this.isback == '-1') {
+                this.$router.go(-1)
+            } else {
+                this.$router.push({ path: this.isback })
+            }
+        }
     },
-    isback: {
-        typeof: String,
-        default: "",
+    setup() {
+        return {};
     },
-    leftFont: {
-        typeof: String,
-        default: "",
-    },
-})
-
-
-const goBack = () => {
-    if (props.isback == '-1') {
-        router.go(-1)
-    } else {
-        router.push({ path: props.isback })
-    }
-}
-
+};
 </script>
 
 <style lang="scss" scoped>
@@ -58,7 +59,7 @@ const goBack = () => {
     background: #fff;
     position: fixed;
     left: 0;
-    top: 0;
+    top:0;
     z-index: 999;
     width: 100%;
     @include f-jc;
@@ -73,7 +74,7 @@ const goBack = () => {
             height: 100%;
             display: inline-block;
             padding: 0 10px;
-            color: $base-color;
+            color:$base-color;
             @include f-center;
 
             .font {
@@ -91,7 +92,7 @@ const goBack = () => {
 
     .title {
         flex: 1;
-        color: $base-color;
+        color:$base-color;
         @include f-center;
     }
 
@@ -110,8 +111,7 @@ const goBack = () => {
     &.logintype {
         background: $login-bg;
         border-bottom: none;
-
-        .title {
+        .title{
             color: #fff;
         }
     }
