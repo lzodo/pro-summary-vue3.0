@@ -1,6 +1,6 @@
-{
+{ // jsconfig.json 这个文件就是给vscode用的，vscode特殊处理过，所以这个json可以写注释
   "compilerOptions": {
-    "target": "es5",
+    // "target": "es5",
     "module": "esnext",
     "baseUrl": "./",
     "moduleResolution": "node",
