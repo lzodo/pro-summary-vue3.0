@@ -56,6 +56,7 @@ import SiHeader from "@/components/SimpleHeader";
 import { defineComponent } from "vue";
 import head_m from "@/assets/images/head_m.png";
 import head_g from "@/assets/images/head_g.png";
+import { isMobile } from "@/utils/tool"
 export default defineComponent({
     name: "UserLogin",
     data() {
@@ -125,6 +126,9 @@ export default defineComponent({
         },
     },
     mounted() {
+        if(!isMobile()){
+            Notify({ type: 'danger', message: "请打开移动端预览模式 Ctrl + Shift + M" });
+        }
         this.getVerifCode(); 
     },
 });
